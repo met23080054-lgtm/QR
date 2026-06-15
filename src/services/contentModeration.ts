@@ -7,7 +7,19 @@ export interface ModerationResult {
 const NSFW_TERMS = [
   'porn', 'pornhub', 'xvideos', 'xxx', 'nude', 'nudes', 'naked',
   'onlyfans', 'hentai', 'rape', 'cp link', 'child porn', 'sex video',
-  'escort', 'brothel', 'sex slave',
+  'escort', 'brothel', 'sex slave', '18+', 'nsfw', 'fetish', 'bdsm',
+  'webcam sex', 'live sex', 'sex chat', 'cam girl', 'adult content',
+  'adult site', 'adult video',
+]
+
+// Domain names of well-known adult/porn sites, used to block 18+ links
+// even when the URL itself contains no profane words.
+const NSFW_DOMAIN_TERMS = [
+  'xnxx', 'xhamster', 'redtube', 'youporn', 'brazzers', 'chaturbate',
+  'spankbang', 'tube8', 'livejasmin', 'bongacams', 'stripchat', 'camsoda',
+  'myfreecams', 'cam4', 'fapdu', 'javhd', 'tnaflix', 'beeg', 'hclips',
+  'drtuber', 'manyvids', 'fansly', 'erome', 'rule34', 'nhentai', 'txxx',
+  'eporner', 'fakku',
 ]
 
 const PROFANITY_TERMS_EN = [
@@ -33,6 +45,7 @@ const INSULT_TERMS_VI = [
   'đồ súc sinh', 'thằng điên', 'con điên', 'đồ điên', 'bố khỉ',
   'mẹ kiếp', 'trời đánh', 'đồ khỉ', 'thằng dở', 'đồ dở hơi',
   'ngu', 'điên', 'khùng', 'ngốc', 'đần', 'dở hơi', 'vô dụng',
+  'đao', 'ngáo', 'điêu', 'không uy tín', 'lừa đảo', 'mất uy tín',
 ]
 
 // Vietnamese slang curses that insult the target's family members.
@@ -94,6 +107,7 @@ const PROFANITY_TERMS_KO = [
 
 const DENYLIST = [
   ...NSFW_TERMS,
+  ...NSFW_DOMAIN_TERMS,
   ...PROFANITY_TERMS_EN,
   ...INSULT_TERMS_EN,
   ...PROFANITY_TERMS_VI,
@@ -131,7 +145,7 @@ function keywordCheck(text: string): ModerationResult {
 }
 
 async function geminiCheck(text: string, apiKey: string): Promise<ModerationResult> {
-  const prompt = `You are a content moderation classifier for a QR code generator used in a school environment. Decide whether the following user-submitted text contains 18+, sexual, NSFW, hateful, violent, profane/vulgar language, insults, or name-calling (e.g. "đồ ngu", "chó điên", "tổ sư", "thằng ngốc", "stupid", "idiot") that should be blocked from being encoded into a QR code. The text may be written in ANY language (Vietnamese, English, Spanish, Portuguese, French, Italian, German, Russian, Chinese, Japanese, Korean, or any other language), and may use abbreviations, teencode, or leetspeak for swear words (e.g. "vl", "vcl", "đm", "wtf", "stfu"). Treat these the same as the full words, regardless of language.
+  const prompt = `You are a content moderation classifier for a QR code generator used in a school environment. Decide whether the following user-submitted text contains 18+, sexual, NSFW, hateful, violent, profane/vulgar language, insults, or name-calling (e.g. "đồ ngu", "chó điên", "tổ sư", "thằng ngốc", "stupid", "idiot") that should be blocked from being encoded into a QR code. This also includes any URL/link that points to a pornographic, adult, or 18+ website (e.g. porn tube sites, cam/webcam sites, hentai or erotic comic sites, escort or dating-for-sex sites) — flag these even if the link text itself contains no profanity. The text may be written in ANY language (Vietnamese, English, Spanish, Portuguese, French, Italian, German, Russian, Chinese, Japanese, Korean, or any other language), and may use abbreviations, teencode, or leetspeak for swear words (e.g. "vl", "vcl", "đm", "wtf", "stfu"). Treat these the same as the full words, regardless of language.
 
 Respond with ONLY a JSON object, no markdown, in this exact format:
 {"flagged": true or false, "reason": "short explanation"}
