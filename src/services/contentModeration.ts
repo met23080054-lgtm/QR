@@ -7,7 +7,7 @@ export interface ModerationResult {
 const NSFW_TERMS = [
   'porn', 'pornhub', 'xvideos', 'xxx', 'nude', 'nudes', 'naked',
   'onlyfans', 'hentai', 'rape', 'cp link', 'child porn', 'sex video',
-  'escort', 'brothel',
+  'escort', 'brothel', 'sex slave',
 ]
 
 const PROFANITY_TERMS_EN = [
@@ -16,6 +16,7 @@ const PROFANITY_TERMS_EN = [
   'dick', 'dickhead', 'pussy', 'slut', 'whore', 'twat', 'prick',
   'douchebag', 'wtf', 'stfu', 'gtfo', 'omfg', 'ffs',
   'yo mama', 'your mama', 'son of a bitch',
+  'ass', 'tit', 'tits', 'boobs',
 ]
 
 const PROFANITY_TERMS_VI = [
