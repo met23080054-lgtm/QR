@@ -23,7 +23,16 @@ const PROFANITY_TERMS_VI = [
   'đm', 'đcm', 'dcm', 'vl', 'vcl', 'vkl', 'clgt', 'cmnr', 'cmm',
 ]
 
-const DENYLIST = [...NSFW_TERMS, ...PROFANITY_TERMS_EN, ...PROFANITY_TERMS_VI]
+const INSULT_TERMS_VI = [
+  'tổ sư', 'tổ cha', 'chó điên', 'đồ ngu', 'thằng ngu', 'con ngu',
+  'đồ ngốc', 'thằng ngốc', 'con ngốc', 'đồ đần', 'đần độn', 'óc lợn',
+  'não tôm', 'đồ khốn nạn', 'khốn nạn', 'thằng khốn', 'con khốn',
+  'mất dạy', 'vô học', 'đồ rác rưởi', 'rác rưởi', 'súc sinh',
+  'đồ súc sinh', 'thằng điên', 'con điên', 'đồ điên', 'bố khỉ',
+  'mẹ kiếp', 'trời đánh', 'đồ khỉ', 'thằng dở', 'đồ dở hơi',
+]
+
+const DENYLIST = [...NSFW_TERMS, ...PROFANITY_TERMS_EN, ...PROFANITY_TERMS_VI, ...INSULT_TERMS_VI]
 
 function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
@@ -46,7 +55,7 @@ function keywordCheck(text: string): ModerationResult {
 }
 
 async function geminiCheck(text: string, apiKey: string): Promise<ModerationResult> {
-  const prompt = `You are a content moderation classifier for a QR code generator used in a school environment. Decide whether the following user-submitted text contains 18+, sexual, NSFW, hateful, violent, profane/vulgar language, or otherwise inappropriate content that should be blocked from being encoded into a QR code. The text may be in Vietnamese, English, or a mix of both, and may use abbreviations or teencode for swear words (e.g. "vl", "vcl", "đm", "wtf", "stfu"). Treat these the same as the full words.
+  const prompt = `You are a content moderation classifier for a QR code generator used in a school environment. Decide whether the following user-submitted text contains 18+, sexual, NSFW, hateful, violent, profane/vulgar language, insults, or name-calling (e.g. "đồ ngu", "chó điên", "tổ sư", "thằng ngốc", "stupid", "idiot") that should be blocked from being encoded into a QR code. The text may be in Vietnamese, English, or a mix of both, and may use abbreviations or teencode for swear words (e.g. "vl", "vcl", "đm", "wtf", "stfu"). Treat these the same as the full words.
 
 Respond with ONLY a JSON object, no markdown, in this exact format:
 {"flagged": true or false, "reason": "short explanation"}
