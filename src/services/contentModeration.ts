@@ -30,48 +30,63 @@ const INSULT_TERMS_VI = [
   'mất dạy', 'vô học', 'đồ rác rưởi', 'rác rưởi', 'súc sinh',
   'đồ súc sinh', 'thằng điên', 'con điên', 'đồ điên', 'bố khỉ',
   'mẹ kiếp', 'trời đánh', 'đồ khỉ', 'thằng dở', 'đồ dở hơi',
+  'ngu', 'điên', 'khùng', 'ngốc', 'đần', 'dở hơi', 'vô dụng',
+]
+
+const INSULT_TERMS_EN = [
+  'stupid', 'idiot', 'moron', 'dumb', 'dumbass', 'loser', 'lame',
+  'imbecile', 'retard', 'lunatic',
 ]
 
 const PROFANITY_TERMS_ES = [
   'puta', 'puto', 'mierda', 'pendejo', 'cabrón', 'gilipollas',
-  'joder', 'maricón', 'coño', 'verga',
+  'joder', 'maricón', 'coño', 'verga', 'estúpido', 'idiota', 'tonto',
 ]
 
 const PROFANITY_TERMS_PT = [
   'porra', 'caralho', 'foder', 'cacete', 'arrombado', 'merda',
+  'estúpido', 'idiota', 'burro',
 ]
 
 const PROFANITY_TERMS_FR = [
   'merde', 'putain', 'connard', 'salope', 'enculé', 'pute', 'bordel',
+  'stupide', 'idiot', 'crétin',
 ]
 
 const PROFANITY_TERMS_IT = [
   'cazzo', 'puttana', 'stronzo', 'vaffanculo', 'troia',
+  'stupido', 'idiota', 'scemo',
 ]
 
 const PROFANITY_TERMS_DE = [
   'scheiße', 'scheisse', 'arschloch', 'hure', 'wichser', 'ficken',
+  'idiot', 'blöd',
 ]
 
 const PROFANITY_TERMS_RU = [
   'блять', 'сука', 'хуй', 'пизда', 'ебать', 'мудак',
+  'дурак', 'идиот', 'тупой',
 ]
 
 const PROFANITY_TERMS_ZH = [
   '妈的', '傻逼', '婊子', '操你妈', '王八蛋', '滚你妈',
+  '笨蛋', '蠢', '白痴',
 ]
 
 const PROFANITY_TERMS_JA = [
   'くそったれ', 'ちくしょう', 'ばかやろう', 'くそ野郎',
+  'バカ', 'ばか',
 ]
 
 const PROFANITY_TERMS_KO = [
   '씨발', '개새끼', '병신', '미친놈',
+  '바보', '멍청이',
 ]
 
 const DENYLIST = [
   ...NSFW_TERMS,
   ...PROFANITY_TERMS_EN,
+  ...INSULT_TERMS_EN,
   ...PROFANITY_TERMS_VI,
   ...INSULT_TERMS_VI,
   ...PROFANITY_TERMS_ES,
