@@ -15,6 +15,7 @@ const PROFANITY_TERMS_EN = [
   'shit', 'bullshit', 'bitch', 'asshole', 'bastard', 'cunt',
   'dick', 'dickhead', 'pussy', 'slut', 'whore', 'twat', 'prick',
   'douchebag', 'wtf', 'stfu', 'gtfo', 'omfg', 'ffs',
+  'yo mama', 'your mama', 'son of a bitch',
 ]
 
 const PROFANITY_TERMS_VI = [
@@ -33,6 +34,12 @@ const INSULT_TERMS_VI = [
   'ngu', 'điên', 'khùng', 'ngốc', 'đần', 'dở hơi', 'vô dụng',
 ]
 
+// Vietnamese slang curses that insult the target's family members.
+const FAMILY_INSULT_TERMS_VI = [
+  'mẹ mày', 'cha mày', 'bố mày', 'thằng bố mày', 'con mẹ mày',
+  'bà mày', 'ông mày', 'tao là bố mày', 'tao là mẹ mày', 'nhà mày',
+]
+
 const INSULT_TERMS_EN = [
   'stupid', 'idiot', 'moron', 'dumb', 'dumbass', 'loser', 'lame',
   'imbecile', 'retard', 'lunatic',
@@ -41,36 +48,37 @@ const INSULT_TERMS_EN = [
 const PROFANITY_TERMS_ES = [
   'puta', 'puto', 'mierda', 'pendejo', 'cabrón', 'gilipollas',
   'joder', 'maricón', 'coño', 'verga', 'estúpido', 'idiota', 'tonto',
+  'tu madre', 'hijo de puta',
 ]
 
 const PROFANITY_TERMS_PT = [
   'porra', 'caralho', 'foder', 'cacete', 'arrombado', 'merda',
-  'estúpido', 'idiota', 'burro',
+  'estúpido', 'idiota', 'burro', 'sua mãe', 'filho da puta',
 ]
 
 const PROFANITY_TERMS_FR = [
   'merde', 'putain', 'connard', 'salope', 'enculé', 'pute', 'bordel',
-  'stupide', 'idiot', 'crétin',
+  'stupide', 'idiot', 'crétin', 'ta mère', 'fils de pute',
 ]
 
 const PROFANITY_TERMS_IT = [
   'cazzo', 'puttana', 'stronzo', 'vaffanculo', 'troia',
-  'stupido', 'idiota', 'scemo',
+  'stupido', 'idiota', 'scemo', 'tua madre', 'figlio di puttana',
 ]
 
 const PROFANITY_TERMS_DE = [
   'scheiße', 'scheisse', 'arschloch', 'hure', 'wichser', 'ficken',
-  'idiot', 'blöd',
+  'idiot', 'blöd', 'deine mutter', 'hurensohn',
 ]
 
 const PROFANITY_TERMS_RU = [
   'блять', 'сука', 'хуй', 'пизда', 'ебать', 'мудак',
-  'дурак', 'идиот', 'тупой',
+  'дурак', 'идиот', 'тупой', 'твою мать', 'сукин сын',
 ]
 
 const PROFANITY_TERMS_ZH = [
   '妈的', '傻逼', '婊子', '操你妈', '王八蛋', '滚你妈',
-  '笨蛋', '蠢', '白痴',
+  '笨蛋', '蠢', '白痴', '你妈', '你妈的',
 ]
 
 const PROFANITY_TERMS_JA = [
@@ -89,6 +97,7 @@ const DENYLIST = [
   ...INSULT_TERMS_EN,
   ...PROFANITY_TERMS_VI,
   ...INSULT_TERMS_VI,
+  ...FAMILY_INSULT_TERMS_VI,
   ...PROFANITY_TERMS_ES,
   ...PROFANITY_TERMS_PT,
   ...PROFANITY_TERMS_FR,
