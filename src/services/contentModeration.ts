@@ -32,7 +32,58 @@ const INSULT_TERMS_VI = [
   'mẹ kiếp', 'trời đánh', 'đồ khỉ', 'thằng dở', 'đồ dở hơi',
 ]
 
-const DENYLIST = [...NSFW_TERMS, ...PROFANITY_TERMS_EN, ...PROFANITY_TERMS_VI, ...INSULT_TERMS_VI]
+const PROFANITY_TERMS_ES = [
+  'puta', 'puto', 'mierda', 'pendejo', 'cabrón', 'gilipollas',
+  'joder', 'maricón', 'coño', 'verga',
+]
+
+const PROFANITY_TERMS_PT = [
+  'porra', 'caralho', 'foder', 'cacete', 'arrombado', 'merda',
+]
+
+const PROFANITY_TERMS_FR = [
+  'merde', 'putain', 'connard', 'salope', 'enculé', 'pute', 'bordel',
+]
+
+const PROFANITY_TERMS_IT = [
+  'cazzo', 'puttana', 'stronzo', 'vaffanculo', 'troia',
+]
+
+const PROFANITY_TERMS_DE = [
+  'scheiße', 'scheisse', 'arschloch', 'hure', 'wichser', 'ficken',
+]
+
+const PROFANITY_TERMS_RU = [
+  'блять', 'сука', 'хуй', 'пизда', 'ебать', 'мудак',
+]
+
+const PROFANITY_TERMS_ZH = [
+  '妈的', '傻逼', '婊子', '操你妈', '王八蛋', '滚你妈',
+]
+
+const PROFANITY_TERMS_JA = [
+  'くそったれ', 'ちくしょう', 'ばかやろう', 'くそ野郎',
+]
+
+const PROFANITY_TERMS_KO = [
+  '씨발', '개새끼', '병신', '미친놈',
+]
+
+const DENYLIST = [
+  ...NSFW_TERMS,
+  ...PROFANITY_TERMS_EN,
+  ...PROFANITY_TERMS_VI,
+  ...INSULT_TERMS_VI,
+  ...PROFANITY_TERMS_ES,
+  ...PROFANITY_TERMS_PT,
+  ...PROFANITY_TERMS_FR,
+  ...PROFANITY_TERMS_IT,
+  ...PROFANITY_TERMS_DE,
+  ...PROFANITY_TERMS_RU,
+  ...PROFANITY_TERMS_ZH,
+  ...PROFANITY_TERMS_JA,
+  ...PROFANITY_TERMS_KO,
+]
 
 function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
@@ -55,7 +106,7 @@ function keywordCheck(text: string): ModerationResult {
 }
 
 async function geminiCheck(text: string, apiKey: string): Promise<ModerationResult> {
-  const prompt = `You are a content moderation classifier for a QR code generator used in a school environment. Decide whether the following user-submitted text contains 18+, sexual, NSFW, hateful, violent, profane/vulgar language, insults, or name-calling (e.g. "đồ ngu", "chó điên", "tổ sư", "thằng ngốc", "stupid", "idiot") that should be blocked from being encoded into a QR code. The text may be in Vietnamese, English, or a mix of both, and may use abbreviations or teencode for swear words (e.g. "vl", "vcl", "đm", "wtf", "stfu"). Treat these the same as the full words.
+  const prompt = `You are a content moderation classifier for a QR code generator used in a school environment. Decide whether the following user-submitted text contains 18+, sexual, NSFW, hateful, violent, profane/vulgar language, insults, or name-calling (e.g. "đồ ngu", "chó điên", "tổ sư", "thằng ngốc", "stupid", "idiot") that should be blocked from being encoded into a QR code. The text may be written in ANY language (Vietnamese, English, Spanish, Portuguese, French, Italian, German, Russian, Chinese, Japanese, Korean, or any other language), and may use abbreviations, teencode, or leetspeak for swear words (e.g. "vl", "vcl", "đm", "wtf", "stfu"). Treat these the same as the full words, regardless of language.
 
 Respond with ONLY a JSON object, no markdown, in this exact format:
 {"flagged": true or false, "reason": "short explanation"}
